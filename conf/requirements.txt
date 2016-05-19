@@ -1,0 +1,6 @@
+# rpm, nginx, supervisor, uwsgi, mysql-devel, gcc, python-devel, gcc-c++
+Django==1.9.1
+MySQL-python==1.2.5
+pymorphy2==0.8
+django-redis==4.3.0
+django-redis-cache==1.6.5
