@@ -101,3 +101,9 @@ gen
 
 # Project settings
 settings_local.py
+
+# CRM data
+*.sql
+
+# Classifier model objects
+*.dump
