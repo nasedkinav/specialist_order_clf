@@ -76,7 +76,7 @@ class Specialist:
 
             # reviews data
             's_review_count': 0,
-            's_reviews_mean': 0,
+            's_review_mean': 0,
 
             # level and experience data
             's_level_set': to_binary(15 <= row['st_sci'] <= 35),

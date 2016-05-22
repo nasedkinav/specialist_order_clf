@@ -112,7 +112,7 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': False,
         },
-        'clf': {
+        'classifier': {
             'handlers': ['clf_file', 'console'],
             'level': 'DEBUG',
             'propagate': False,
@@ -136,8 +136,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-
 STATIC_URL = '/static/'
+
+CACHE_KEY_K_X_Y_DATA = 'data_object_k_x_y_dictionary'
+
+CACHE_TIME = {
+    '1_month': 2678400
+}
 
 try:
     from settings_local import *

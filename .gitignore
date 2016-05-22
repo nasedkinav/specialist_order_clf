@@ -107,3 +107,6 @@ settings_local.py
 
 # Classifier model objects
 *.dump
+
+# Report
+*.png

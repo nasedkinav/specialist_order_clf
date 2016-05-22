@@ -1,4 +1,4 @@
-import numpy
+import numpy as np
 
 from django.db import connections
 
@@ -100,10 +100,10 @@ class AssignedPair:
         K = sorted(self.data)
         X = [self.data[k] for k in K]
 
-        return K, numpy.array(X), self.success
+        return K, np.array(X), self.success
 
     @staticmethod
-    def collect_objects(start_dt, end_dt, transform=False):
+    def collect_objects(start_dt, end_dt):
         K, X, y = None, [], []
 
         cursor = connections['classifier'].cursor()
@@ -127,15 +127,10 @@ class AssignedPair:
             """ % o_row['id'])
             order = Order(o_row['id'])
             for s_row in dict_fetchall(cursor):
-                assigned_pair = AssignedPair(order, Specialist(s_row['prep_id']))
-                if transform:
-                    K, ap_X, ap_y = assigned_pair.transform()
-                    X.append(ap_X)
-                    y.append(ap_y)
-                else:
-                    X.append(assigned_pair)
+                K, ap_X, ap_y = AssignedPair(order, Specialist(s_row['prep_id'])).transform()
+                X.append(ap_X)
+                y.append(ap_y)
 
         # close connection
         cursor.close()
-
-        return (K, X, y) if transform else X
+        return K, X, y
