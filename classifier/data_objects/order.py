@@ -92,7 +92,10 @@ class Order:
         # retrieve order data
         cursor = connections['classifier'].cursor()
         cursor.execute('select * from ri_orders where id = %s' % self.id)
-        row = dict_fetchall(cursor)[0]
+        fetchall = dict_fetchall(cursor)
+        if not fetchall:
+            raise Exception("Undefined order '%s'" % self.id)
+        row = fetchall[0]
 
         # gather params
         self.success = (40 <= row['status'] < 90) or (row['status'] >= 90 and row['sto'] in (10, 30))

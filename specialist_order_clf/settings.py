@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+ACCESS_TOKEN = ''
 
 # Application definition
 INSTALLED_APPS = [
@@ -139,6 +140,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CACHE_KEY_K_X_Y_DATA = 'data_object_k_x_y_dictionary'
+CACHE_KEY_MODEL = 'classifier_object'
 
 CACHE_TIME = {
     '1_month': 2678400

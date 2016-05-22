@@ -11,7 +11,10 @@ class Specialist:
 
         cursor = connections['classifier'].cursor()
         cursor.execute("select * from ri_preps where id = '%s'" % self.id)
-        row = dict_fetchall(cursor)[0]
+        fetchall = dict_fetchall(cursor)
+        if not fetchall:
+            raise Exception("Undefined specialist '%s'" % self.id)
+        row = fetchall[0]
 
         self.self_region = set()
         self.self_station = set()

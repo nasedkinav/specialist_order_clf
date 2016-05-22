@@ -20,3 +20,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('classifier.urls', namespace='classifier'))
 ]
+
+handler404 = 'classifier.views.error404'
+handler500 = 'classifier.views.error500'

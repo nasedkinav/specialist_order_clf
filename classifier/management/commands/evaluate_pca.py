@@ -9,10 +9,10 @@ from classifier.evaluation import evaluate_pca
 
 
 class Command(BaseCommand):
-    args = ''
+    args = '<scale>'
     help = 'Evaluate data PCA variance ratio'
 
-    def handle(self, *args, **options):
+    def handle(self, scale=False, *args, **options):
         logger = logging.getLogger(__name__)
 
         cache = django_redis.get_cache('default')
@@ -23,4 +23,4 @@ class Command(BaseCommand):
             return
 
         logger.info("PCA variance ratio: %s" %
-                    str(evaluate_pca(data['X'], data['y'], os.path.join(settings.BASE_DIR, 'dump/report/pca.png'))))
+                    evaluate_pca(data['X'], data['y'], os.path.join(settings.BASE_DIR, 'dump/report/pca.png'), scale))
